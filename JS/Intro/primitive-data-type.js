@@ -9,7 +9,7 @@ let str1="Double Qoute I am Imaan"
 console.log(str1)
 let str2='Single Qoute I am Imaan'
 console.log(str2)
-let str3=Back Tick I am Imaan
+let str3=`Back Tick I am Imaan`
 console.log(str3)
 
 let str4="23"
@@ -23,5 +23,24 @@ let str6=`
     Dont 
     `
 
-let str7='Dont't do this anymore'
+let str7='Dont Do This Anymore'
+
+// boolean represent true or false//
+let johnIsMale=true
+console.log(JohnIsMale);
+
+let johnIsMarried=false
+console.log(johnIsMarried)
+
+
+let nullVal1=null
+console.log(nullVal1)
+
+
+let undefinedVal1=undefined //dont do this 
+console.log(undefinedVal1)
+let undefinedVal2; //js engine set to undefined 
+console.log(undefinedVal2)
+
+ 
 
