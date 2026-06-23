@@ -39,3 +39,13 @@ console.log(
 
 
 
+// for the or || one statement has to be true for the whole statement to be true 
+
+console.log(`this is not true =${!true}`)
+console.log(`This is not false =${!false}`)
+
+
+
+
+
+
