@@ -40,3 +40,11 @@ if (age<10) {
 } else if (age < 50) {
   alert("you are an ancestor");
 }
+
+
+/*
+use if statements only to ensure we get only one alert 
+for age.
+must be correct one. 
+*/
+
