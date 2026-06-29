@@ -13,6 +13,6 @@ console.log("user details is",typeof userDetails)
 
 //template string use back tricks 
 
-let userDeatils2=`${firstName} ${secondName}
- is ${age} years ols and he stays at ${address}`
-console.log(userDetails2)
+console.log(`His name is ${firstName} ${secondName} he's ${age} years old, lives in ${address} `)
+
+

@@ -20,5 +20,5 @@ let activeUserName=userName2 || userName1
 
 console.log(activeUserName)
 
-let bothUserNameOk=userName1&&userName2 
+let bothUserNameOk = userName1&&userName2 
 console.log(bothUserNameOk)  // truthy or falsey 

@@ -19,11 +19,11 @@ console.log(`val1=${val1} val2=${val2} val1&&val2=${val1&&val2}`)
 let mercy_age=20
 let mercy_balance=50000
 
-// if mercy age is greater than 18 and has more than 20k in her account 
+// is mercy age is greater than 18 and has more than 20k in her account?
 
-let is_greater_than_18=mercy_age>18 
+let is_greater_than_18 = mercy_age > 18 
 console.log(`Is mercy age greater than 18 ${is_greater_than_18}`)
-let has_more_than_20k=mercy_balance>20000
+let has_more_than_20k = mercy_balance>20000
 console.log(`Mercy has more than 20k ${has_more_than_20k}`)
 console.log(`mercy age is greater than 18 
     and has more than 20k in her account 

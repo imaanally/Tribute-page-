@@ -6,9 +6,8 @@
 
 let numb1="23"
 let numb2=23
-let strictEqual=numb1===numb2
-console.log(`numb1=${numb1}===numb2=$numb2=${numb2}
-    Ans ${strictEqual} its type is ${typeof strictEquality}`)
+let strictEqual = numb1===numb2
+console.log(`Ans ${strictEqual} its type is ${typeof strictEqual}`)
 let nonStrictEquality=numb1==numb2
 console.log(`numb1=${numb1}===numb2=$numb2=${numb2}
     Ans ${nonStrictEquality} its type is ${typeof nonStrictEquality}`);

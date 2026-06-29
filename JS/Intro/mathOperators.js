@@ -1,12 +1,12 @@
 //assignment 
 
 let numb1=23
-console.log(`numb is ${numb1} 
+console.log(`numb1 is ${numb1} 
 its type is ${typeof numb1}`)
 let numb1=40
 console.log(`numb2 is ${numb2}
 its type is ${typeof numb1}`)
-let numn2 = 60
+let numb2 = 60
 console.log(`numb2 is ${numb2}
 its type is ${typeof numb2}`);
 let numb3=numb1*numb2+10
