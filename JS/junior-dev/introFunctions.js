@@ -63,11 +63,11 @@ areaOfTriangle(base2,height2)
 areaOfTriangle();
 
 
-//function areaOfTriangle(base=20){
-    //console.log(`base, height is ${base} its type is ${typeof base}`);
-   // areaOfTriangle(20);
+function areaOfTriangle(base=20){
+console.log(`base, height is ${base} its type is ${typeof base}`);
+   areaOfTriangle(20);
 
-//}
+}
 
 let base=20
 let height=30
