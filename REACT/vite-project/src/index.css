@@ -1,0 +1,12 @@
+.nav{
+    background-color:rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.nav input{
+    flex: 1;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
