@@ -1,20 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-// starts with a capital letter
-// most valid component you can create 
 
-/*
-path "./"
-import <AnyName:Default Export> from "path"
-import js or jsx files. the extention is optional. 
-*/
+import AmazonPage2 from "./AmazonPage2.0"
 
-import AmazonPage from "./Mapping"
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Mapping/>
+    <AmazonPage2/>
   </StrictMode>,
 );
 
