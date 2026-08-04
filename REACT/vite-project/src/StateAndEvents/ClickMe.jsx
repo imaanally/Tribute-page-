@@ -1,3 +1,9 @@
+/*
+state -> 
+when state changes everywhere that state is being used it changes automatically
+*/
+
+
 import { useState } from "react";
 
 function ClickMe() {
