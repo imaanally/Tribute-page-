@@ -10,11 +10,11 @@ import <AnyName:Default Export> from "path"
 import js or jsx files. the extention is optional. 
 */
 
-import AmazonPage from "./Props"
+import AmazonPage from "./Mapping"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Props/>
+    <Mapping/>
   </StrictMode>,
 );
 
