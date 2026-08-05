@@ -1,4 +1,4 @@
-import ItemCard from "./ItemCards";
+import ColorAndCircles from "./ColorAndCircles";
 
 const data = [
   {

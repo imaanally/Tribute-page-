@@ -16,10 +16,10 @@ calling a function is telling the function to do its work
 create a simple function that when you cal it it alerts you on the current time 
 */
 
-function timeAlert(){
-    const date = new Date();
-    alert (` time stamp: ${date.toISOString()}`)
-}
+//function timeAlert(){
+   // const date = new Date();
+   // alert (` time stamp: ${date.toISOString()}`)
+//}
 
 /*
 call a function use the function name then () -> brackets
@@ -33,14 +33,6 @@ calculate the area of a triangle
 
 
 
-function areaOfTriangle(base,height){
-    console.log(`base, height is ${base} its type is ${typeof base}`)
-    console.log(`height is ${height} its type is ${typeof height}`);
-    const area = 0.5 * base * height 
-    console.log(
-        `for a triangle with base ${base} and height ${height} area is ${area} `
-    )
-}
 
 /*
 scenario 1 
@@ -59,7 +51,7 @@ scenario 5;
 create a variable base2="hello" and variable height2="true"
 areaOfTriangle(base2,height2)
 */
-
+/*
 areaOfTriangle();
 
 
@@ -82,3 +74,36 @@ let base2 = "hello";
 let height2 = "true";
 areaOfTriangle("hello", "true");
 
+*/
+
+/*function sayHello(){
+    return "Hey Imaan";
+}
+
+let greeting = sayHello();
+
+console.log(greeting)
+
+function sayBye (){
+    return "bye Imaan";
+}
+
+let message = sayBye();
+
+console.log(message);
+
+function sayImaan(){
+    return "i love imaan";
+}
+
+console.log(sayImaan())
+
+*/
+
+function multiply (a , b){
+    a = a*b;
+}
+
+multiply (2 ,4)
+
+console.log(multiply)
