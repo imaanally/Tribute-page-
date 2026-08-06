@@ -1,13 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { strictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-
-import StatendEvents from "./StateAndEvents/Form"
+import GithubProject from "./GithubProject";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <StateAndEvents/>
-  </StrictMode>,
+  <strictMode>
+    <GithubProject />
+  </strictMode>,
 );
-
-
