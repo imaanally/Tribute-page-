@@ -53,11 +53,6 @@ function EvenOrOdd(props) {
 }
 
 function EvenComponent() {
-  useEffect(() => {
-    //Born
-    console.log("Even component rendered");
-  }, []);
-
   return (
     <div>
       <h1>Even</h1>
@@ -66,13 +61,6 @@ function EvenComponent() {
 }
 
 function OddComponet() {
-  //empty dependency
-  useEffect(() => {
-    return () => {
-      console.log("odd component died");
-    }; //called when component dies.
-  }, []);
-
   return (
     <div>
       <h1>Odd</h1>
