@@ -5,11 +5,11 @@ deposits, withdraw,
 show account.
 getter and setter. →
 → easy to scale function <understing>
-____________________________
+________________________________
 
 → Login account
 → Create account
-    → Deposit
+→ Deposit
     → Withdrawal
     → account balance
 
@@ -19,12 +19,27 @@ class BankAccount:
 
     def __init__(self,name,balance,account_no):
         self.name=name
-        self.balance=balance
+        self._balance=balance
         self.account_no=account_no
 
-    #latter change gee
-    def get_balance(self):
-        pass
+    #data i read
+    @property
+    def balance(self):
+        print("somebody tried to read johns balance")
+        return self._balance
+
+    #to control updated
+    @balance.setter
+    def balance(self,value):
+        if not isinstance(value,(int,float)):
+            print("Ensure you pass a number for new balance")
+            return
+
+        if value<0:
+            print("Ensure new balance must not be less than 0")
+            return
+
+        self._balance=value
 
     #setter
     def deposit(self):
@@ -41,4 +56,7 @@ class BankAccount:
 
 john=BankAccount(name="John Mwangi",balance=0,account_no="223344223")
 
-john.show_account_details()
+print("John blance ",john.balance)
+# john.show_account_details()
+#it is easily accessible →
+# john.balance=4000 #setting → updating the property
