@@ -100,3 +100,60 @@ select
     gu.name as guardian_name
 from guardian as gu
 cross join student as st;
+-- AGGREGATE QUERIES
+
+-- COUNT
+select
+    count(*) as total_students
+from student;
+
+
+-- COUNT, AVG, SUM, MAX, MIN
+select
+    count(*) as total_students,
+    avg(marks) as average_marks,
+    sum(marks) as total_marks,
+    max(marks) as highest_marks,
+    min(marks) as lowest_marks
+from student;
+
+
+-- AGGREGATE + WHERE
+select
+    count(*) as passing_students,
+    avg(marks) as average_passing_marks
+from student
+where marks >= 50;
+
+
+-- GROUP BY
+select
+    student_id,
+    count(*) as total_discipline_records
+from discipline
+group by student_id;
+
+
+-- GROUP BY + INNER JOIN
+select
+    st.name as student_name,
+    count(*) as total_discipline_records
+from discipline as di
+inner join student as st
+on st.id = di.student_id
+group by st.name
+order by total_discipline_records desc;
+
+
+-- GROUP BY + LEFT JOIN
+select
+    st.id as student_id,
+    st.name as student_name,
+    count(ss.subject_id) as total_subjects_enrolled
+from student as st
+left join student_subject as ss
+on st.id = ss.student_id
+group by st.id, st.name
+order by total_subjects_enrolled desc;
+
+
