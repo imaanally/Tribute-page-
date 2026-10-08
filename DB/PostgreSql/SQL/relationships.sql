@@ -50,3 +50,53 @@ create table set_null_test(
     id bigserial primary key,
     student_id bigint references student(id) on delete set null
 );
+-- ONE-TO-MANY RELATIONSHIP: STUDENT -> GUARDIAN
+create table guardian(
+    id serial primary key,
+    name varchar(250),
+    student_id bigint not null references student(id) on delete cascade
+);
+-- INSERT GUARDIANS
+insert into guardian (name, student_id)
+values
+    ('John Mwangi', 1),
+    ('Tina tina', 4),
+    ('Ivy Ivy', 5),
+    ('Jane Jane', 6),
+    ('Sun Lu', 6),
+    ('Ji Ji', 6),
+    ('Joanna', 6);
+-- INNER JOIN
+select *
+from student as st
+inner join guardian as gu
+on gu.student_id = st.id;
+
+
+-- LEFT JOIN
+select
+    st.id as student_id,
+    st.name as student_name,
+    gu.name as guardian_name
+from student as st
+left join guardian as gu
+on gu.student_id = st.id;
+
+
+-- RIGHT JOIN
+select
+    st.id as student_id,
+    st.name as student_name,
+    gu.name as guardian_name
+from student as st
+right join guardian as gu
+on gu.student_id = st.id;
+
+
+-- CROSS JOIN
+select
+    st.id as student_id,
+    st.name as student_name,
+    gu.name as guardian_name
+from guardian as gu
+cross join student as st;
