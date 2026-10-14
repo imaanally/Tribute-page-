@@ -1,7 +1,9 @@
+
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 from typing import Optional
 from prisma import Prisma
+from routes.member import router as member_router
 
 app = FastAPI()
 
@@ -45,6 +47,41 @@ async def create_product(product: Product):
     return new_product
 
 
+@app.put("/products/{product_id}")
+async def update_product(product_id: str, product: Product):
+    existing_product = await db.product.find_unique(
+        where={"id": product_id}
+    )
+
+    if not existing_product:
+        raise HTTPException(
+            status_code=404,
+            detail="Product not found"
+        )
+
+    updated_product = await db.product.update(
+        where={"id": product_id},
+        data=product.dict()
+    )
+
+    return updated_product
+
+
+@app.get("/products/{product_id}")
+async def get_product(product_id: str):
+    product = await db.product.find_unique(
+        where={"id": product_id}
+    )
+
+    if not product:
+        raise HTTPException(
+            status_code=404,
+            detail="Product not found"
+        )
+
+    return product
+
+
 @app.delete("/products/{product_id}")
 async def delete_product(product_id: str):
     product = await db.product.find_unique(
@@ -62,3 +99,6 @@ async def delete_product(product_id: str):
     )
 
     return {"message": "Product deleted successfully"}
+
+
+app.include_router(member_router, prefix="/member")
