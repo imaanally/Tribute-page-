@@ -10,6 +10,8 @@ python-dotenv = "*"
 prisma = "*"
 pydantic = {extras = ["email"], version = "*"}
 cloudinary = "*"
+pyjwt = "*"
+bcrypt = "*"
 
 [dev-packages]
 

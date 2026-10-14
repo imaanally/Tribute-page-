@@ -1,12 +1,20 @@
 
+import bcrypt
 from fastapi import APIRouter, status, HTTPException
 from pydantic import BaseModel, EmailStr
+from auth import create_access_token
 
 router = APIRouter()
 
 
 class Member(BaseModel):
     name: str
+    email: EmailStr
+    phone: str
+    password: str
+
+
+class Login(BaseModel):
     email: EmailStr
     password: str
 
@@ -25,19 +33,60 @@ async def sign_up(payload: Member):
             detail="Email already used"
         )
 
+    hashed_password = bcrypt.hashpw(
+        payload.password.encode("utf-8"),
+        bcrypt.gensalt()
+    ).decode("utf-8")
+
     async with db.tx() as tx:
         member = await tx.member.create(
             data={
                 "name": payload.name,
-                "email": payload.email
+                "email": payload.email,
+                "phone": payload.phone
             }
         )
 
-        await tx.member_password.create(
+        await tx.memberpassword.create(
             data={
-                "member_id": member.id,
-                "password": payload.password
+                "memberId": member.id,
+                "password": hashed_password
             }
         )
 
     return member
+
+
+@router.post("/login")
+async def login(payload: Login):
+    from app import db
+
+    member = await db.member.find_unique(
+        where={"email": payload.email}
+    )
+
+    if not member:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid email or password"
+        )
+
+    member_password = await db.memberpassword.find_unique(
+        where={"memberId": member.id}
+    )
+
+    if not member_password or not bcrypt.checkpw(
+        payload.password.encode("utf-8"),
+        member_password.password.encode("utf-8")
+    ):
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid email or password"
+        )
+
+    token = create_access_token({"id": member.id})
+
+    return {
+        "access_token": token,
+        "token_type": "bearer"
+    }
