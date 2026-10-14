@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 python-dotenv = "*"
 prisma = "*"
 pydantic = {extras = ["email"], version = "*"}
+cloudinary = "*"
 
 [dev-packages]
 

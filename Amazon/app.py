@@ -4,6 +4,8 @@ from pydantic import BaseModel
 from typing import Optional
 from prisma import Prisma
 from routes.member import router as member_router
+from routes.product_image import router as product_image_router
+from cloud import delete_from_cloud
 
 app = FastAPI()
 
@@ -94,6 +96,18 @@ async def delete_product(product_id: str):
             detail="Product not found"
         )
 
+    images = await db.product_image.find_many(
+        where={"productId": product_id}
+    )
+
+    for image in images:
+        public_id = image.image.split("/")[-1].split(".")[0]
+        delete_from_cloud(public_id)
+
+        await db.product_image.delete(
+            where={"id": image.id}
+        )
+
     await db.product.delete(
         where={"id": product_id}
     )
@@ -102,3 +116,4 @@ async def delete_product(product_id: str):
 
 
 app.include_router(member_router, prefix="/member")
+app.include_router(product_image_router, prefix="/product-image")
