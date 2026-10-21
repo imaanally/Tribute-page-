@@ -2,12 +2,17 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import useAxios from "../../hooks/useAxios";
 import bgImg from "../../../assets/hero.png";
+import { useNavigate } from "react-router-dom";
+import useApp from "../../hooks/useApps";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const request = useAxios();
+
+  const { setMember, setToken } = useApp();
+  const navigate = useNavigate();
 
   const handleSignIn = async () => {
     if (!email) {
@@ -26,13 +31,24 @@ function Login() {
       data: { email, password },
     });
 
-    console.log(res);
+    const responseData = res?.responseData;
+
+    console.log(responseData);
+
+    const member = responseData?.member ?? null;
+    const token = responseData?.token ?? responseData?.access_token ?? null;
+
+    setMember(member);
+    setToken(token);
+
+    localStorage.setItem("member", JSON.stringify(member));
+    localStorage.setItem("token", token ?? "");
+
+    navigate("/product");
 
     if (res?._error === true) {
       return;
     }
-
-    // TM's class checks the response here; navigation comes later.
   };
 
   return (

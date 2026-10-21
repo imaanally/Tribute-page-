@@ -1,10 +1,12 @@
 import toast from "react-hot-toast";
 import axios from "axios";
+import useApp from "./useApps";
 
 const base_url = "http://localhost:5000";
 
 function useAxios() {
   const loadingId = "axios-loader";
+  const { token } = useApp();
 
   const request = async (requestObj) => {
     toast.loading("... Loading", { id: loadingId });
@@ -16,7 +18,10 @@ function useAxios() {
         method,
         url: `${base_url}/${url}`,
         data,
-        headers,
+        headers: {
+          ...headers,
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       const responseData = response?.data;
